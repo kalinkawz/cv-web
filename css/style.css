@@ -665,6 +665,20 @@ button.btn {
   margin-bottom: 0.4rem;
 }
 
+.drop__desc {
+  margin-bottom: 1rem;
+}
+
+/* Étiquettes d'outils plus petites que celles du mur de skills */
+.drop__tools {
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.drop__tools .sticker {
+  font-size: 0.8rem;
+}
+
 /* ---------- 02 · Parcours : timeline qui se remplit ---------- */
 .timeline {
   position: relative;

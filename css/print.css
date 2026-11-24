@@ -44,7 +44,10 @@ body {
 .hero__actions,
 .section__num,
 .section__intro,
-#drops,            /* projets vides pour l'instant : à réafficher quand ils existeront */
+.drop--soon,       /* cartes « Bientôt » : rien à imprimer */
+.drop::before,
+.drop::after,
+.drop__stamp,
 .form,
 .footer,
 .tape::before {
@@ -132,7 +135,16 @@ body {
   display: none;
 }
 
+.drops {
+  display: block;
+}
+
+.drop__label {
+  display: none;
+}
+
 .job,
+.drop,
 .card {
   padding: 0;
   background: #fff !important;

@@ -2,6 +2,12 @@
 
 ## 2026-11-24
 
+- Fichiers : `index.html`, `js/i18n.js`
+- Changement : Drop #01 renommé « Undertaker » ; Drop #02 rempli (sites de tournée The Weeknd et PLK réalisés avec l'IA) en FR/EN.
+
+- Fichiers : `index.html`, `js/i18n.js`, `css/style.css`, `css/print.css`
+- Changement : Drop #01 rempli (jeu point & click Godot : outils, apprentissages) en FR/EN ; la section projets réapparaît à l'impression, sans les cartes « Bientôt ».
+
 - Fichiers : `index.html`
 - Changement : liens LinkedIn et GitHub réels dans la section contact (au lieu de `#`) ; suppression du TODO Formspree devenu inutile.
 

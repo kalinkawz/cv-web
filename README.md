@@ -31,4 +31,7 @@ Le dossier `sources/` (CV d'origine) est exclu par `.gitignore` et ne doit jamai
 
 ## Mise en ligne
 
-Hébergé gratuitement sur GitHub Pages (branche `main`, dossier racine).
+Hébergé gratuitement sur GitHub Pages (branche `main`, dossier racine) :
+**https://kalinkawz.github.io/cv-web/**
+
+Pour publier une modification : `git add .` → `git commit -m "message"` → `git push`, puis attendre environ 1 minute.

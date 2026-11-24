@@ -2,6 +2,9 @@
 
 ## 2026-11-24
 
+- Fichiers : `index.html`, `README.md`
+- Changement : étape 8 — site en ligne sur GitHub Pages ; `og:url`, `og:image` et `canonical` passent en adresses complètes pour l'aperçu de partage.
+
 - Fichiers : `css/style.css` (réécrit), `index.html`, `js/main.js`, `js/i18n.js`, `css/print.css`, `CLAUDE.md`
 - Changement : couleurs rééquilibrées (fond crème, orange en zones, vert acide en touches) car jugées agressives ; animations douces ajoutées (intro du nom, blobs, progression, timeline, tilt, aimant, tampon) + bouton Pause pour le bien-être.
 

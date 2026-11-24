@@ -2,6 +2,9 @@
 
 ## 2026-11-24
 
+- Fichiers : `css/style.css`, `css/print.css`, `index.html`, `assets/favicon.svg`, `assets/img/og-image.png`, `CLAUDE.md` (branche `couleurs`)
+- Changement : essai de palette gris clair / bleu marine / cuivre ; variables renommées par rôle ; textes sur cuivre ajustés pour garder un contraste lisible.
+
 - Fichiers : `index.html`, `README.md`
 - Changement : étape 8 — site en ligne sur GitHub Pages ; `og:url`, `og:image` et `canonical` passent en adresses complètes pour l'aperçu de partage.
 

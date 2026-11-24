@@ -2,6 +2,9 @@
 
 ## 2026-11-24
 
+- Fichiers : `index.html`
+- Changement : liens LinkedIn et GitHub réels dans la section contact (au lieu de `#`) ; suppression du TODO Formspree devenu inutile.
+
 - Fichiers : `index.html`, `README.md`
 - Changement : étape 8 — site en ligne sur GitHub Pages ; `og:url`, `og:image` et `canonical` passent en adresses complètes pour l'aperçu de partage.
 

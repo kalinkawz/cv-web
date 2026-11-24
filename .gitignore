@@ -1,0 +1,6 @@
+# CV d'origine : ne jamais publier
+sources/
+
+# Fichiers système / éditeur
+.DS_Store
+Thumbs.db

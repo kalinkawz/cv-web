@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="meta.title">
+      Nicolas Delimauges — CV Ingénieur Informatique
+    </title>
+    <meta
+      name="description"
+      data-i18n-content="meta.description"
+      content="CV et portfolio de Nicolas Delimauges, élève ingénieur en réseaux informatiques et objets connectés à Amiens."
+    />
+    <meta name="author" content="Nicolas Delimauges" />
+    <meta name="theme-color" content="#ff7a1a" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph : aperçu quand le lien est partagé (LinkedIn, WhatsApp…) -->
+    <!-- TODO étape 8 : remplacer les chemins par l'URL complète du site en ligne -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nicolas Delimauges — CV Ingénieur Informatique" />
+    <meta
+      property="og:description"
+      content="Réseaux, objets connectés et protection des données : CV et portfolio de Nicolas Delimauges."
+    />
+    <meta property="og:url" content="./" />
+    <meta property="og:image" content="assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nicolas Delimauges, CV Ingénieur Informatique, en lettres graffiti noires sur fond orange" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Polices Google : Rubik Spray Paint (titres) + Space Grotesk (texte) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Styles appliqués uniquement à l'impression / PDF -->
+    <link rel="stylesheet" href="css/print.css" media="print" />
+
+    <!-- Signale au CSS que le JS est actif (sinon tout reste visible sans animation)
+         et réapplique tout de suite la pause des animations si elle a été choisie -->
+    <script>
+      document.documentElement.classList.add("js");
+      try {
+        if (localStorage.getItem("motion") === "paused") {
+          document.documentElement.classList.add("motion-paused");
+        }
+      } catch (e) {}
+    </script>
+    <!-- defer : le script s'exécute une fois le HTML chargé -->
+
+    <script src="js/i18n.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu" data-i18n="skip">Aller au contenu</a>
+
+    <!-- Barre de progression de lecture (remplie par main.js) -->
+    <div class="progress" aria-hidden="true"></div>
+
+    <!-- ===== HERO : l'affiche ===== -->
+    <header class="hero">
+      <!-- Formes organiques qui « respirent » (parallaxe : --depth) -->
+      <div class="hero__blobs" aria-hidden="true">
+        <span class="blob blob--pale" style="--depth: 0.6"></span>
+        <span class="blob blob--orange" style="--depth: 1"></span>
+        <span class="blob blob--spark" style="--depth: 1.8"></span>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__top">
+          <p class="sticker sticker--drop">Drop 01 — 2026</p>
+          <!-- Caché sans JavaScript : i18n.js l'affiche -->
+          <button
+            class="btn-lang"
+            id="lang-toggle"
+            type="button"
+            lang="en"
+            aria-label="Switch to English"
+            hidden
+          >
+            EN
+          </button>
+        </div>
+
+        <!-- Les coulures sont dessinées en CSS sous la 2e ligne (.hero__line--drips) -->
+        <!-- aria-label : nom lu d'un bloc même quand main.js découpe les lettres -->
+        <h1 class="hero__name" aria-label="Nicolas Delimauges">
+          <span class="hero__line">Nicolas</span>
+          <span class="hero__line hero__line--drips">Delimauges</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          <span data-i18n="hero.cv">CV</span>
+          <mark class="marker" data-i18n="hero.role"
+            >Ingénieur Informatique</mark
+          >
+        </p>
+
+        <ul class="hero__tags">
+          <li class="sticker">Amiens, France</li>
+          <li class="sticker sticker--ink" data-i18n="hero.tag.network">
+            Réseaux &amp; IoT
+          </li>
+          <li class="sticker sticker--soft" data-i18n="hero.tag.data">
+            Data &amp; RGPD
+          </li>
+        </ul>
+
+        <div class="hero__actions">
+          <a class="btn btn--ink" href="#parcours" data-i18n="hero.cta.path"
+            >Voir le parcours</a
+          >
+          <a class="btn" href="#contact" data-i18n="hero.cta.contact"
+            >Me contacter</a
+          >
+          <!-- Caché sans JavaScript : main.js l'affiche et lance l'impression -->
+          <button
+            class="btn btn--accent"
+            id="print-button"
+            type="button"
+            data-i18n="hero.cta.pdf"
+            hidden
+          >
+            Télécharger le CV (PDF)
+          </button>
+        </div>
+
+        <!-- Badge rotatif décoratif : texte posé sur un cercle (textPath) -->
+        <div class="badge" aria-hidden="true">
+          <svg class="badge__ring" viewBox="0 0 200 200" focusable="false">
+            <defs>
+              <path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+            </defs>
+            <text>
+              <textPath href="#badge-circle" textLength="488" lengthAdjust="spacing">
+                NICOLAS DELIMAUGES ★ CV 2026 ★ AMIENS ★
+              </textPath>
+            </text>
+          </svg>
+          <span class="badge__center">ND</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== NAVIGATION : barre de stickers ===== -->
+    <nav class="nav" aria-label="Sections du CV" data-i18n-aria="nav.label">
+      <ul class="container nav__list">
+        <li>
+          <a href="#drops"><span class="nav__num">01</span> Drops</a>
+        </li>
+        <li>
+          <a href="#parcours"
+            ><span class="nav__num">02</span>
+            <span data-i18n="nav.path">Parcours</span></a
+          >
+        </li>
+        <li>
+          <a href="#formation"
+            ><span class="nav__num">03</span>
+            <span data-i18n="nav.education">Formation</span></a
+          >
+        </li>
+        <li>
+          <a href="#skills"><span class="nav__num">04</span> Skills</a>
+        </li>
+        <li>
+          <a href="#off"><span class="nav__num">05</span> Off the clock</a>
+        </li>
+        <li>
+          <a href="#contact"><span class="nav__num">06</span> Contact</a>
+        </li>
+        <!-- Bouton bien-être : met en pause toutes les animations (mémorisé) -->
+        <li class="nav__motion">
+          <button
+            class="motion-toggle"
+            id="motion-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Mettre les animations en pause"
+            data-i18n-aria="motion.label"
+            hidden
+          >
+            <span class="motion-toggle__icon" aria-hidden="true"></span>
+            Pause
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="contenu">
+      <!-- ===== 01 — LES DROPS (projets) ===== -->
+      <section class="section" id="drops" aria-labelledby="drops-title">
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">01</span>
+            <h2 class="section__title" id="drops-title" data-i18n="drops.title">
+              Les Drops
+            </h2>
+          </div>
+          <p class="section__intro" data-i18n="drops.intro">
+            Mes projets, sortis un par un. La collection arrive bientôt.
+          </p>
+
+          <div class="drops">
+            <article class="drop">
+              <span class="drop__stamp" aria-hidden="true" data-i18n="drops.stamp">Bientôt</span>
+              <p class="drop__label">Drop #01</p>
+              <h3 class="drop__title" data-i18n="drops.soon">Bientôt dispo</h3>
+              <p data-i18n="drops.wip">Projet en cours de préparation.</p>
+            </article>
+            <article class="drop">
+              <span class="drop__stamp" aria-hidden="true" data-i18n="drops.stamp">Bientôt</span>
+              <p class="drop__label">Drop #02</p>
+              <h3 class="drop__title" data-i18n="drops.soon">Bientôt dispo</h3>
+              <p data-i18n="drops.wip">Projet en cours de préparation.</p>
+            </article>
+            <article class="drop">
+              <span class="drop__stamp" aria-hidden="true" data-i18n="drops.stamp">Bientôt</span>
+              <p class="drop__label">Drop #03</p>
+              <h3 class="drop__title" data-i18n="drops.soon">Bientôt dispo</h3>
+              <p data-i18n="drops.wip">Projet en cours de préparation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bandes défilantes façon ruban de chantier (décoratives) -->
+      <div class="tapes" aria-hidden="true">
+        <div class="tape-band">
+          <div class="tape-band__track">
+            <span data-i18n="band.skills">RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★ RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★&nbsp;</span>
+            <span data-i18n="band.skills">RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★ RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★&nbsp;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 02 — LE PARCOURS (expériences) ===== -->
+      <section
+        class="section section--paper"
+        id="parcours"
+        aria-labelledby="parcours-title"
+      >
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">02</span>
+            <h2
+              class="section__title"
+              id="parcours-title"
+              data-i18n="path.title"
+            >
+              Le Parcours
+            </h2>
+          </div>
+
+          <ol class="timeline">
+            <li class="job tape">
+              <p class="job__date" data-i18n="path.dpo.date">
+                Nov. 2024 — Aujourd'hui
+              </p>
+              <h3 class="job__title" data-i18n="path.dpo.title">
+                Apprenti Data Protection Officer
+              </h3>
+              <p class="job__place">Crédit Agricole Brie Picardie · Amiens</p>
+              <ul class="job__tasks">
+                <li data-i18n="path.dpo.task1">
+                  Lecture et analyse des réglementations (RGPD, IA Act, notes de
+                  service internes)
+                </li>
+                <li data-i18n="path.dpo.task2">
+                  Gestion du registre des traitements
+                </li>
+                <li data-i18n="path.dpo.task3">
+                  Réponses aux demandes d'exercice des droits RGPD
+                </li>
+                <li data-i18n="path.dpo.task4">
+                  Analyse des risques métiers orientée RGPD
+                </li>
+              </ul>
+            </li>
+
+            <li class="job job--side tape">
+              <p class="sticker sticker--side">Side quest</p>
+              <p class="job__date" data-i18n="path.pastry.date">
+                Oct. 2026 · 1 mois
+              </p>
+              <h3 class="job__title" data-i18n="path.pastry.title">
+                Stage en pâtisserie
+              </h3>
+              <p class="job__place" data-i18n="path.pastry.place">
+                KC Peaches, Pearse St · Dublin, Irlande
+              </p>
+              <ul class="job__tasks">
+                <li data-i18n="path.pastry.task1">
+                  Immersion en cuisine professionnelle, 100 % en anglais
+                </li>
+                <li data-i18n="path.pastry.task2">
+                  Rigueur, rythme et travail d'équipe en conditions réelles
+                </li>
+              </ul>
+            </li>
+
+            <li class="job tape">
+              <p class="job__date" data-i18n="path.tech.date">
+                Janv. 2023 — Août 2024
+              </p>
+              <h3 class="job__title" data-i18n="path.tech.title">
+                Technicien informatique en alternance
+              </h3>
+              <p class="job__place" data-i18n="path.tech.place">
+                Ministère de l'Intérieur, Police aux Frontières · Paris
+              </p>
+              <ul class="job__tasks">
+                <li data-i18n="path.tech.task1">Assistance utilisateur</li>
+                <li data-i18n="path.tech.task2">
+                  Dépannage réseau et logiciel, maintenance informatique
+                </li>
+                <li data-i18n="path.tech.task3">
+                  Mise en place de solutions (serveur d'impression, équipements
+                  de contrôle frontaliers)
+                </li>
+                <li data-i18n="path.tech.task4">
+                  Missions à l'étranger (Londres)
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== 03 — FORMATION ===== -->
+      <section class="section" id="formation" aria-labelledby="formation-title">
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">03</span>
+            <h2
+              class="section__title"
+              id="formation-title"
+              data-i18n="edu.title"
+            >
+              Formation
+            </h2>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <p class="card__date">2024 — 2027</p>
+              <h3 class="card__title" data-i18n="edu.eng.title">
+                Cycle ingénieur Réseaux Informatiques et Objets Connectés
+              </h3>
+              <p>UniLaSalle · Amiens</p>
+            </article>
+            <article class="card card--orange">
+              <p class="card__date" data-i18n="edu.ef.date">
+                Août 2026 · 1 mois
+              </p>
+              <h3 class="card__title" data-i18n="edu.ef.title">
+                Séjour linguistique en espagnol
+              </h3>
+              <p data-i18n="edu.ef.place">EF Barcelona · Espagne</p>
+            </article>
+            <article class="card">
+              <p class="card__date">2022 — 2024</p>
+              <h3 class="card__title" data-i18n="edu.bts.title">
+                BTS Systèmes Numériques, Informatique et Réseaux
+              </h3>
+              <p>La Providence · Amiens</p>
+            </article>
+            <article class="card">
+              <p class="card__date">2022</p>
+              <h3 class="card__title" data-i18n="edu.bac.title">
+                Baccalauréat technologique STI2D
+              </h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 04 — SKILLS (mur de stickers) ===== -->
+      <section
+        class="section section--dark"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">04</span>
+            <h2 class="section__title" id="skills-title">Skills</h2>
+          </div>
+
+          <div class="skills">
+            <div class="skills__group">
+              <h3 class="skills__title">Code</h3>
+              <ul class="stickers">
+                <li class="sticker">HTML</li>
+                <li class="sticker sticker--soft">CSS</li>
+                <li class="sticker sticker--orange">JavaScript</li>
+                <li class="sticker">Java</li>
+                <li class="sticker sticker--soft">Python</li>
+              </ul>
+            </div>
+
+            <div class="skills__group">
+              <h3 class="skills__title" data-i18n="skills.net.title">
+                Réseau &amp; data
+              </h3>
+              <ul class="stickers">
+                <li
+                  class="sticker sticker--orange"
+                  data-i18n="skills.net.network"
+                >
+                  Gestion réseaux
+                </li>
+                <li class="sticker" data-i18n="skills.net.maintenance">
+                  Maintenance &amp; dépannage
+                </li>
+                <li class="sticker sticker--soft" data-i18n="skills.net.gdpr">
+                  RGPD
+                </li>
+                <li class="sticker" data-i18n="skills.net.aiact">IA Act</li>
+              </ul>
+            </div>
+
+            <div class="skills__group">
+              <h3 class="skills__title" data-i18n="skills.tools.title">
+                Outils
+              </h3>
+              <ul class="stickers">
+                <li class="sticker" data-i18n="skills.tools.office">
+                  Suite Office
+                </li>
+                <li class="sticker sticker--soft">Claude</li>
+                <li class="sticker sticker--orange">ChatGPT</li>
+                <li class="sticker">Gemini</li>
+                <li class="sticker sticker--soft">Copilot</li>
+              </ul>
+            </div>
+
+            <div class="skills__group">
+              <h3 class="skills__title" data-i18n="skills.lang.title">
+                Langues
+              </h3>
+              <ul class="stickers">
+                <li class="sticker sticker--orange" data-i18n="skills.lang.fr">
+                  Français · natif
+                </li>
+                <li class="sticker" data-i18n="skills.lang.en">
+                  Anglais · B2 (TOEIC 915)
+                </li>
+                <li class="sticker sticker--soft" data-i18n="skills.lang.es">
+                  Espagnol · A2+
+                </li>
+              </ul>
+            </div>
+
+            <div class="skills__group">
+              <h3 class="skills__title">Mindset</h3>
+              <ul class="stickers">
+                <li class="sticker" data-i18n="skills.mind.project">
+                  Gestion de projet
+                </li>
+                <li class="sticker sticker--soft" data-i18n="skills.mind.team">
+                  Travail d'équipe
+                </li>
+                <li
+                  class="sticker sticker--orange"
+                  data-i18n="skills.mind.autonomy"
+                >
+                  Autonomie
+                </li>
+                <li class="sticker" data-i18n="skills.mind.licence">
+                  Permis B · véhiculé
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 05 — OFF THE CLOCK (sport & voyages) ===== -->
+      <section class="section section--off" id="off" aria-labelledby="off-title">
+        <span class="blob blob--off" aria-hidden="true"></span>
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">05</span>
+            <h2 class="section__title" id="off-title">Off the clock</h2>
+          </div>
+
+          <div class="cards cards--two">
+            <article class="card card--ink tape">
+              <h3 class="card__title" data-i18n="off.sport.title">Sport</h3>
+              <p data-i18n="off.sport.text">
+                Boxe, renforcement physique, course.
+              </p>
+            </article>
+            <article class="card card--orange tape">
+              <h3 class="card__title" data-i18n="off.travel.title">Voyages</h3>
+              <p data-i18n="off.travel.text">
+                Angleterre, Espagne, Irlande, Belgique, Pays-Bas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 06 — HIT ME UP (contact) ===== -->
+      <section
+        class="section section--warm"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container">
+          <div class="section__head">
+            <span class="section__num" aria-hidden="true">06</span>
+            <h2 class="section__title" id="contact-title">Hit me up</h2>
+          </div>
+          <p class="section__intro" data-i18n="contact.intro">
+            Un stage, une alternance, un projet ? Laisse-moi un message.
+          </p>
+
+          <div class="contact">
+            <!-- Sans JS : envoi classique vers Formspree. Avec JS : envoi sans quitter la page (main.js) -->
+            <!-- TODO : remplacer XXXXXXX par ton identifiant Formspree -->
+            <form
+              class="form"
+              id="contact-form"
+              action="https://formspree.io/f/xqpqgown"
+              method="POST"
+            >
+              <div class="form__field">
+                <label for="name" data-i18n="contact.form.name">Nom</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form__field">
+                <label for="email" data-i18n="contact.form.email">E-mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form__field">
+                <label for="message" data-i18n="contact.form.message"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Anti-spam : champ invisible, seuls les robots le remplissent -->
+              <input
+                class="form__gotcha"
+                type="text"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+
+              <button
+                class="btn btn--ink"
+                type="submit"
+                data-i18n="contact.form.send"
+              >
+                Envoyer
+              </button>
+              <p class="form__status" role="status" aria-live="polite"></p>
+            </form>
+
+            <ul class="contact__links">
+              <li class="sticker">Amiens, France</li>
+              <!-- TODO : remplacer # par les vraies URL -->
+              <li><a class="btn btn--ink" href="#">LinkedIn</a></li>
+              <li><a class="btn" href="#">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="footer__tag" aria-hidden="true">ND</p>
+        <p data-i18n="footer.text">
+          © 2026 Nicolas Delimauges — fait main en HTML, CSS &amp; JS.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -82,7 +82,7 @@ body {
 
 .marker {
   background: none;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
 }
 
 .hero__tags {
@@ -121,7 +121,7 @@ body {
   font-weight: 700;
   font-size: 13pt;
   letter-spacing: 0.08em;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
 }
 
 /* ---------- Parcours ---------- */
@@ -163,7 +163,7 @@ body {
   margin-bottom: 0.5mm;
   padding: 0;
   background: none;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
   font-size: 10pt;
 }
 

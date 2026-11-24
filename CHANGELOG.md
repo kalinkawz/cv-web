@@ -2,6 +2,7 @@
 
 ## 2026-11-24
 
+<<<<<<< HEAD
 - Fichiers : `index.html`, `js/i18n.js`
 - Changement : Drop #01 renommé « Undertaker » ; Drop #02 rempli (sites de tournée The Weeknd et PLK réalisés avec l'IA) en FR/EN.
 
@@ -10,6 +11,13 @@
 
 - Fichiers : `index.html`
 - Changement : liens LinkedIn et GitHub réels dans la section contact (au lieu de `#`) ; suppression du TODO Formspree devenu inutile.
+=======
+- Fichiers : `CLAUDE.md` (branche `couleurs`)
+- Changement : suppression d'une règle de contraste héritée de l'ancienne palette orange / vert, qui contredisait la palette marine / cuivre.
+
+- Fichiers : `css/style.css`, `css/print.css`, `index.html`, `assets/favicon.svg`, `assets/img/og-image.png`, `CLAUDE.md` (branche `couleurs`)
+- Changement : essai de palette gris clair / bleu marine / cuivre ; variables renommées par rôle ; textes sur cuivre ajustés pour garder un contraste lisible.
+>>>>>>> couleurs
 
 - Fichiers : `index.html`, `README.md`
 - Changement : étape 8 — site en ligne sur GitHub Pages ; `og:url`, `og:image` et `canonical` passent en adresses complètes pour l'aperçu de partage.

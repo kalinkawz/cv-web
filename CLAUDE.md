@@ -64,8 +64,9 @@ Règles de style :
 - Polices : **Rubik Spray Paint** (grands titres uniquement) + **Space Grotesk** (texte, interface)
 - Néo-brutalisme : contours noirs épais, ombres pleines décalées, blocs de couleur francs
 - Effets graffiti : soulignés au marqueur, coulures SVG, stickers légèrement inclinés, scotch, grain léger en CSS
-- Palette en **60 / 30 / 10** (pour éviter un rendu agressif) : crème `#FBF6EF` / `#F4ECE1` (fonds), encre `#1C1A17` (texte, contours 2 px, une section sombre), **orange mandarine** `#FF7A1A` (zones moyennes : blobs, boutons, numéros) + orange pâle `#FFE6D3` (fonds doux), **vert acide** `#C6FF00` en petites touches uniquement (marqueur, soulignés, focus, sélection) — jamais en fond de section
-- Contraste : texte noir sur orange ou vert, jamais l'inverse ; texte orange sur blanc seulement en `#C2410C`
+- Palette en **60 / 30 / 10** : gris clair `#E5E7EB` (fond, + `#D9DCE2` alterné, `#F3F4F6` cartes), **bleu marine** `#1F2A44` (texte, contours 2 px, nav, section Skills, footer), **cuivre** `#B87333` (blobs, ombres, grands numéros, timeline, ruban, marqueur) + cuivre pâle `#EAD8C6` (fonds doux, étiquettes, boutons secondaires)
+- Contraste : jamais de petit texte sur le cuivre plein (3:1 seulement) ; petit texte cuivre = `#8A5222` sur clair, `#D9A273` sur marine
+- Les variables CSS portent des noms de rôle (`--bg`, `--ink`, `--accent`…) : changer de palette = modifier le bloc `:root`
 - Animations douces, pensées pour le bien-être : intro du nom lettre par lettre, blobs qui respirent avec parallaxe, apparition au défilement, barre de progression, timeline qui se remplit, soulignés qui se tracent, cartes inclinables et boutons magnétiques (souris uniquement), badge rotatif et ruban défilant (pause au survol)
 - Bouton **« Pause »** des animations dans la nav (mémorisé) ; tout est coupé si `prefers-reduced-motion` ; contenu visible sans JS
 - **Responsive** : les grilles se replient en une seule colonne sur mobile

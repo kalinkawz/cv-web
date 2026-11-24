@@ -1,19 +1,21 @@
 /* =========================================================
    CV Nicolas Delimauges — style street / streetwear
    Répartition des couleurs 60 / 30 / 10 :
-   crème (fond) · encre (texte, contours) · orange + étincelles vert acide
+   gris clair (fond) · bleu marine (texte, contours) · cuivre (accents)
+   Les noms décrivent un rôle, pas une couleur : changer la palette = changer ce bloc
    ========================================================= */
 
 /* ---------- Variables : couleurs, polices, effets ---------- */
 :root {
-  --cream: #fbf6ef;        /* fond principal */
-  --cream-2: #f4ece1;      /* fond alterné */
-  --surface: #fffdf9;      /* cartes */
-  --ink: #1c1a17;          /* encre adoucie */
-  --orange: #ff7a1a;       /* orange mandarine : couleur de caractère */
-  --orange-pale: #ffe6d3;  /* orange pâle : grands fonds doux */
-  --orange-dark: #c2410c;  /* seule teinte orange pour du texte sur clair */
-  --acid: #c6ff00;         /* vert acide : petites touches uniquement */
+  --bg: #e5e7eb;           /* fond principal (gris clair) */
+  --bg-2: #d9dce2;         /* fond alterné */
+  --surface: #f3f4f6;      /* cartes */
+  --ink: #1f2a44;          /* encre : bleu marine */
+  --accent: #b87333;       /* cuivre : formes, ombres, grands chiffres (jamais sous du petit texte) */
+  --accent-pale: #ead8c6;  /* cuivre pâle : fonds doux, étiquettes */
+  --accent-dark: #8a5222;  /* cuivre foncé : petit texte sur fond clair (5:1) */
+  --accent-light: #d9a273; /* cuivre clair : petit texte sur fond marine (6:1) */
+  --spark: #b87333;        /* touches : marqueur, soulignés, focus */
 
   --font-tag: "Rubik Spray Paint", "Space Grotesk", sans-serif;
   --font-body: "Space Grotesk", system-ui, sans-serif;
@@ -40,7 +42,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.05rem;
@@ -61,7 +63,7 @@ a {
 }
 
 ::selection {
-  background: var(--acid);
+  background: var(--accent-pale);
   color: var(--ink);
 }
 
@@ -69,7 +71,7 @@ a {
 :focus-visible {
   outline: 3px solid var(--ink);
   outline-offset: 3px;
-  box-shadow: 0 0 0 7px var(--acid);
+  box-shadow: 0 0 0 7px var(--spark);
 }
 
 .container {
@@ -83,7 +85,7 @@ a {
   left: 1rem;
   z-index: 200;
   padding: 0.6rem 1rem;
-  background: var(--acid);
+  background: var(--accent-pale);
   border: var(--border);
   font-weight: 700;
 }
@@ -94,7 +96,7 @@ a {
 
 /* Surlignage façon marqueur (tracé à l'apparition) */
 .marker {
-  background: linear-gradient(var(--acid), var(--acid)) no-repeat 0 88% / 100% 42%;
+  background: linear-gradient(var(--spark), var(--spark)) no-repeat 0 88% / 100% 42%;
   color: inherit;
   padding-inline: 0.15em;
 }
@@ -107,7 +109,7 @@ a {
   right: 0;
   z-index: 100;
   height: 4px;
-  background: var(--orange);
+  background: var(--accent);
   transform: scaleX(var(--scroll, 0));
   transform-origin: 0 50%;
   pointer-events: none;
@@ -143,14 +145,14 @@ a {
   transform: rotate(0) scale(1.06);
 }
 
-.sticker--ink { background: var(--ink); color: var(--cream); box-shadow: 3px 3px 0 var(--orange); }
-.sticker--soft { background: var(--orange-pale); }
-.sticker--orange { background: var(--orange); }
+.sticker--ink { background: var(--ink); color: var(--bg); box-shadow: 3px 3px 0 var(--accent); }
+.sticker--soft { background: var(--accent-pale); }
+.sticker--outline { border-color: var(--accent-dark); color: var(--accent-dark); }
 
 .sticker--drop {
   background: var(--ink);
-  color: var(--acid);
-  box-shadow: 3px 3px 0 var(--orange);
+  color: var(--accent-light);
+  box-shadow: 3px 3px 0 var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -172,26 +174,29 @@ a {
 }
 
 .btn:hover {
-  background: var(--orange-pale);
+  background: var(--accent-pale);
   box-shadow: var(--shadow-hover);
 }
 
 .btn--ink {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--bg);
 }
 
 .btn--ink:hover {
   background: var(--ink);
-  box-shadow: 7px 7px 0 var(--orange);
+  box-shadow: 7px 7px 0 var(--accent);
 }
 
+/* Cuivre pâle : le texte marine reste lisible (le cuivre plein serait trop faible) */
 .btn--accent {
-  background: var(--orange);
+  background: var(--accent-pale);
+  box-shadow: 4px 4px 0 var(--accent);
 }
 
 .btn--accent:hover {
-  background: var(--orange);
+  background: var(--accent-pale);
+  box-shadow: 7px 7px 0 var(--accent);
 }
 
 /* Bouton (balise button) : mêmes réglages qu'un lien .btn */
@@ -218,7 +223,7 @@ button.btn {
   width: 96px;
   height: 26px;
   background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(28, 26, 23, 0.12);
+  border: 1px solid rgba(31, 42, 68, 0.12);
   transform: translateX(-50%) rotate(-4deg);
 }
 
@@ -249,9 +254,9 @@ button.btn {
 .hero {
   position: relative;
   overflow: hidden;
-  background-color: var(--cream);
+  background-color: var(--bg);
   /* grain léger façon mur peint */
-  background-image: radial-gradient(rgba(28, 26, 23, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(31, 42, 68, 0.06) 1px, transparent 1px);
   background-size: 5px 5px;
   padding-block: clamp(3rem, 10vw, 7rem) clamp(3rem, 8vw, 5rem);
 }
@@ -262,18 +267,18 @@ button.btn {
   pointer-events: none;
 }
 
-.blob--orange {
+.blob--accent {
   right: -8%;
   bottom: -22%;
   width: clamp(300px, 44vw, 640px);
-  background: var(--orange);
+  background: var(--accent);
 }
 
 .blob--pale {
   left: -10%;
   top: -22%;
   width: clamp(260px, 38vw, 560px);
-  background: var(--orange-pale);
+  background: var(--accent-pale);
   animation-duration: 21s;
   animation-direction: alternate-reverse;
 }
@@ -282,7 +287,7 @@ button.btn {
   right: 34%;
   top: 13%;
   width: clamp(36px, 4.5vw, 64px);
-  background: var(--acid);
+  background: var(--spark);
   border: var(--border);
   animation-duration: 9s;
 }
@@ -303,11 +308,11 @@ button.btn {
 .btn-lang {
   width: 3.4rem;
   height: 3.4rem;
-  background: var(--acid);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
   border: var(--border);
   border-radius: 50%;
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: 3px 3px 0 var(--accent);
   font: 700 1rem var(--font-body);
   cursor: pointer;
   transform: translate(var(--mx, 0px), var(--my, 0px)) rotate(8deg);
@@ -356,7 +361,7 @@ button.btn {
   right: 0;
   top: 0.74em;
   height: 0.68em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath fill='%231c1a17' d='M28 0h16v45a8 8 0 0 1-16 0zM222 0h13v70a6.5 6.5 0 0 1-13 0zM448 0h15v35a7.5 7.5 0 0 1-15 0zM648 0h14v85a7 7 0 0 1-14 0zM868 0h15v50a7.5 7.5 0 0 1-15 0z'/%3E%3C/svg%3E") no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath fill='%231f2a44' d='M28 0h16v45a8 8 0 0 1-16 0zM222 0h13v70a6.5 6.5 0 0 1-13 0zM448 0h15v35a7.5 7.5 0 0 1-15 0zM648 0h14v85a7 7 0 0 1-14 0zM868 0h15v50a7.5 7.5 0 0 1-15 0z'/%3E%3C/svg%3E") no-repeat;
   background-size: 100% 100%;
   transform-origin: top;
   pointer-events: none;
@@ -404,7 +409,7 @@ button.btn {
   inset: 4%;
   width: 92%;
   height: 92%;
-  fill: var(--cream);
+  fill: var(--bg);
   font: 700 17px var(--font-body);
   animation: spin 24s linear infinite;
 }
@@ -418,7 +423,7 @@ button.btn {
   font-family: var(--font-tag);
   font-size: clamp(2.4rem, 4vw, 3.4rem);
   line-height: 1;
-  color: var(--orange);
+  color: var(--accent-light);
 }
 
 @keyframes spin {
@@ -453,9 +458,9 @@ button.btn {
 .nav__list a {
   display: inline-block;
   padding: 0.3rem 0.8rem;
-  border: 2px solid rgba(251, 246, 239, 0.35);
+  border: 2px solid rgba(229, 231, 235, 0.35);
   border-radius: 999px;
-  color: var(--cream);
+  color: var(--bg);
   font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
@@ -464,20 +469,20 @@ button.btn {
 }
 
 .nav__num {
-  color: var(--orange);
+  color: var(--accent-light);
   transition: color 0.25s ease;
 }
 
 .nav__list a:hover {
-  background: var(--cream);
-  border-color: var(--cream);
+  background: var(--bg);
+  border-color: var(--bg);
   color: var(--ink);
 }
 
 /* Section en cours (aria-current posé par main.js) */
 .nav__list a[aria-current="true"] {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--accent-pale);
+  border-color: var(--accent-pale);
   color: var(--ink);
 }
 
@@ -497,9 +502,9 @@ button.btn {
   gap: 0.45rem;
   padding: 0.3rem 0.8rem;
   background: transparent;
-  border: 2px solid rgba(251, 246, 239, 0.35);
+  border: 2px solid rgba(229, 231, 235, 0.35);
   border-radius: 999px;
-  color: var(--cream);
+  color: var(--bg);
   font: 700 0.9rem var(--font-body);
   white-space: nowrap;
   cursor: pointer;
@@ -511,13 +516,13 @@ button.btn {
 }
 
 .motion-toggle:hover {
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
 }
 
 .motion-toggle[aria-pressed="true"] {
-  background: var(--acid);
-  border-color: var(--acid);
+  background: var(--accent-pale);
+  border-color: var(--accent-pale);
   color: var(--ink);
 }
 
@@ -536,9 +541,9 @@ button.btn {
   padding-block: clamp(4rem, 9vw, 6.5rem);
 }
 
-.section--paper { background: var(--cream-2); }
-.section--dark { background: var(--ink); color: var(--cream); }
-.section--warm { background: var(--orange-pale); }
+.section--paper { background: var(--bg-2); }
+.section--dark { background: var(--ink); color: var(--bg); }
+.section--warm { background: var(--accent-pale); }
 
 .section__head {
   display: flex;
@@ -547,29 +552,29 @@ button.btn {
   margin-bottom: 2.5rem;
 }
 
-/* Grand numéro : contour orange qui se remplit à l'apparition */
+/* Grand numéro : contour cuivre qui se remplit à l'apparition */
 .section__num {
   font-size: clamp(2.5rem, 7vw, 4.5rem);
   font-weight: 700;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 2px var(--orange-dark);
-  background: linear-gradient(var(--orange), var(--orange)) no-repeat 0 0 / 100% 100%;
+  -webkit-text-stroke: 2px var(--accent-dark);
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 100% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   transition: background-size 1s cubic-bezier(0.6, 0, 0.2, 1) 0.25s;
 }
 
-.section--dark .section__num { -webkit-text-stroke-color: var(--orange); }
+.section--dark .section__num { -webkit-text-stroke-color: var(--accent-light); }
 
-/* Titre souligné au marqueur vert (tracé à l'apparition) */
+/* Titre souligné au marqueur (tracé à l'apparition) */
 .section__title {
   font-family: var(--font-tag);
   font-weight: 400;
   font-size: clamp(2.2rem, 6vw, 4rem);
   line-height: 1;
   text-transform: uppercase;
-  background: linear-gradient(var(--acid), var(--acid)) no-repeat 0 95% / 100% 0.2em;
+  background: linear-gradient(var(--spark), var(--spark)) no-repeat 0 95% / 100% 0.2em;
   transition: background-size 0.8s var(--ease-out) 0.45s;
 }
 
@@ -638,10 +643,10 @@ button.btn {
   top: 1.1rem;
   right: 1rem;
   padding: 0.15rem 0.6rem;
-  background: rgba(255, 230, 211, 0.7);
-  border: 2px solid var(--orange-dark);
+  background: rgba(234, 216, 198, 0.7);
+  border: 2px solid var(--accent-dark);
   border-radius: 4px;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -653,7 +658,7 @@ button.btn {
   display: inline-block;
   margin-bottom: 0.8rem;
   padding: 0.15rem 0.6rem;
-  background: var(--orange);
+  background: var(--accent-pale);
   border: 2px solid var(--ink);
   font-weight: 700;
   font-size: 0.85rem;
@@ -704,7 +709,7 @@ button.btn {
 }
 
 .timeline::after {
-  background: repeating-linear-gradient(45deg, var(--orange) 0 10px, var(--ink) 10px 20px);
+  background: repeating-linear-gradient(45deg, var(--accent) 0 10px, var(--ink) 10px 20px);
   transform: scaleY(var(--fill, 1));
   transform-origin: top;
   transition: transform 0.2s linear;
@@ -719,14 +724,16 @@ button.btn {
 }
 
 .job--side {
-  background: var(--orange-pale);
+  background: var(--accent-pale);
 }
 
 .job .sticker--side {
   position: absolute;
   top: -1rem;
   right: 1rem;
-  background: var(--orange);
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: 3px 3px 0 var(--accent);
   --rot: 4deg;
 }
 
@@ -735,7 +742,7 @@ button.btn {
   margin-bottom: 0.6rem;
   padding: 0.1rem 0.6rem;
   background: var(--ink);
-  color: var(--cream);
+  color: var(--bg);
   font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -750,7 +757,7 @@ button.btn {
   margin-top: 0.2rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
 }
 
 .job__tasks li {
@@ -765,7 +772,7 @@ button.btn {
   position: absolute;
   left: 0;
   font-weight: 700;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
 }
 
 /* ---------- 03 & 05 · Cartes ---------- */
@@ -782,9 +789,9 @@ button.btn {
   box-shadow: var(--shadow);
 }
 
-.card--orange { background: var(--orange-pale); }
-.card--ink { background: var(--ink); color: var(--cream); box-shadow: 4px 4px 0 var(--orange); }
-.card--ink:hover { box-shadow: 7px 7px 0 var(--orange); }
+.card--soft { background: var(--accent-pale); }
+.card--ink { background: var(--ink); color: var(--bg); box-shadow: 4px 4px 0 var(--accent); }
+.card--ink:hover { box-shadow: 7px 7px 0 var(--accent); }
 
 .card__date {
   margin-bottom: 0.5rem;
@@ -792,7 +799,7 @@ button.btn {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--orange-dark);
+  color: var(--accent-dark);
 }
 
 .card__title {
@@ -810,7 +817,7 @@ button.btn {
 
 .skills__title {
   margin-bottom: 1rem;
-  color: var(--orange);
+  color: var(--accent-light);
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -824,7 +831,7 @@ button.btn {
 
 /* Sur fond encre, ombre crème pour garder le relief */
 .section--dark .sticker {
-  box-shadow: 3px 3px 0 var(--cream);
+  box-shadow: 3px 3px 0 var(--bg);
 }
 
 /* ---------- 05 · Off the clock ---------- */
@@ -842,7 +849,7 @@ button.btn {
   top: -90px;
   right: -120px;
   width: clamp(260px, 34vw, 440px);
-  background: var(--orange-pale);
+  background: var(--accent-pale);
   animation-duration: 18s;
 }
 
@@ -886,7 +893,7 @@ button.btn {
 .form__field textarea {
   width: 100%;
   padding: 0.7rem 0.8rem;
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
   border: var(--border);
   border-radius: 0;
@@ -928,13 +935,13 @@ button.btn {
   font-weight: 700;
 }
 
-.form__status--success { background: var(--acid); }
-.form__status--error { background: var(--orange-pale); border-color: var(--orange-dark); }
+.form__status--success { background: var(--accent-pale); }
+.form__status--error { background: var(--surface); border-color: var(--accent-dark); color: var(--accent-dark); }
 
 /* ---------- Footer ---------- */
 .footer {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--bg);
   padding-block: 2rem;
 }
 
@@ -950,7 +957,7 @@ button.btn {
   font-family: var(--font-tag);
   font-size: 2.5rem;
   line-height: 1;
-  color: var(--orange);
+  color: var(--accent-light);
 }
 
 /* ---------- Bande défilante (ruban de chantier) ---------- */
@@ -964,7 +971,7 @@ button.btn {
   width: 106%;
   margin-left: -3%;
   overflow: hidden;
-  background: var(--orange);
+  background: var(--accent);
   border-block: var(--border);
   transform: rotate(-2deg);
 }

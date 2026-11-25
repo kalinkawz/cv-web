@@ -231,6 +231,11 @@
                 <li data-i18n="drops.game.r3">Pilotage de Claude Code (CLAUDE.md, prompts)</li>
                 <li data-i18n="drops.game.r4">Workflow Git : commit, push, pull, branches</li>
               </ul>
+              <!-- Caché sans JS : l'encart ne peut s'ouvrir qu'avec main.js -->
+              <button class="drop__more" type="button" data-dialog="drop-undertaker" hidden>
+                <span class="drop__more-star" aria-hidden="true">✦</span>
+                <span class="drop__more-text" data-i18n="drops.more">Voir le drop</span>
+              </button>
             </article>
             <article class="drop">
               <span class="drop__stamp" aria-hidden="true" data-i18n="drops.web.stamp">2 sites</span>
@@ -251,6 +256,10 @@
                 <li data-i18n="drops.web.r2">Développement assisté par IA (Claude Code, Copilot)</li>
                 <li data-i18n="drops.web.r3">Mise en ligne prévue prochainement</li>
               </ul>
+              <button class="drop__more" type="button" data-dialog="drop-tournees" hidden>
+                <span class="drop__more-star" aria-hidden="true">✦</span>
+                <span class="drop__more-text" data-i18n="drops.more">Voir le drop</span>
+              </button>
             </article>
             <article class="drop drop--soon">
               <span class="drop__stamp" aria-hidden="true" data-i18n="drops.stamp">Bientôt</span>
@@ -259,6 +268,130 @@
               <p data-i18n="drops.wip">Projet en cours de préparation.</p>
             </article>
           </div>
+
+          <!-- ===== Encarts de détail des drops (<dialog>, ouverts par main.js) =====
+               Pour ajouter une image : remplace un <figure class="gallery__item gallery__item--empty">
+               par <figure class="gallery__item"><img src="assets/img/drops/xxx.webp" alt="…" width="1200" height="750" loading="lazy" /><figcaption>…</figcaption></figure> -->
+          <dialog class="drop-dialog" id="drop-undertaker" aria-labelledby="drop-undertaker-title">
+            <div class="drop-dialog__inner">
+              <header class="drop-dialog__head">
+                <p class="drop__label">Drop #01</p>
+                <h3 class="drop-dialog__title" id="drop-undertaker-title">Undertaker</h3>
+                <p class="drop-dialog__tagline" data-i18n="drops.game.desc">
+                  Point &amp; click narratif en huis clos, programmé avec l'aide de l'IA.
+                </p>
+                <button class="drop-dialog__close" type="button" data-close aria-label="Fermer" data-i18n-aria="dialog.close">✕</button>
+              </header>
+
+              <!-- Galerie : bande d'images qui défile horizontalement (CSS seul) -->
+              <div class="gallery" tabindex="0" role="region" aria-label="Galerie d'images" data-i18n-aria="dialog.gallery">
+                <figure class="gallery__item gallery__item--empty">
+                  <span data-i18n="dialog.noimg">Visuel à venir</span>
+                </figure>
+                <figure class="gallery__item gallery__item--empty">
+                  <span data-i18n="dialog.noimg">Visuel à venir</span>
+                </figure>
+              </div>
+
+              <div class="drop-dialog__body">
+                <div class="drop-dialog__text">
+                  <h4 data-i18n="dialog.pitch">Le pitch</h4>
+                  <p data-i18n="drops.game.long">
+                    Undertaker est un jeu point &amp; click narratif qui se déroule dans un lieu unique.
+                    Le joueur explore, interagit avec les objets et fait avancer l'histoire par ses choix.
+                  </p>
+
+                  <h4 data-i18n="dialog.learned">Ce que j'ai appris</h4>
+                  <ul class="job__tasks">
+                    <li data-i18n="drops.game.r2">Prise en main de Godot et du GDScript</li>
+                    <li data-i18n="drops.game.r3">Pilotage de Claude Code (CLAUDE.md, prompts)</li>
+                    <li data-i18n="drops.game.r4">Workflow Git : commit, push, pull, branches</li>
+                  </ul>
+                </div>
+
+                <!-- Fiche technique, façon étiquette de composition d'un vêtement -->
+                <aside class="drop-dialog__specs">
+                  <dl>
+                    <dt data-i18n="dialog.status">Statut</dt>
+                    <dd data-i18n="drops.game.status">Prototype en cours</dd>
+                    <dt data-i18n="dialog.year">Année</dt>
+                    <dd>2026</dd>
+                    <dt data-i18n="drops.tools">Outils</dt>
+                    <dd>
+                      <ul class="stickers drop__tools">
+                        <li class="sticker">Godot</li>
+                        <li class="sticker">GDScript</li>
+                        <li class="sticker">Claude Code</li>
+                        <li class="sticker">VS Code</li>
+                        <li class="sticker">GitHub</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <!-- Quand une démo ou le code est en ligne, remplace ce texte par :
+                       <a class="btn btn--ink" href="URL" target="_blank" rel="noopener">Démo</a> -->
+                  <p class="sticker sticker--outline" data-i18n="dialog.nolink">Liens à venir</p>
+                </aside>
+              </div>
+            </div>
+          </dialog>
+
+          <dialog class="drop-dialog" id="drop-tournees" aria-labelledby="drop-tournees-title">
+            <div class="drop-dialog__inner">
+              <header class="drop-dialog__head">
+                <p class="drop__label">Drop #02</p>
+                <h3 class="drop-dialog__title" id="drop-tournees-title" data-i18n="drops.web.title">Sites de tournée</h3>
+                <p class="drop-dialog__tagline" data-i18n="drops.web.desc">
+                  Sites de présentation de tournées d'artistes, réalisés avec l'aide de l'IA.
+                </p>
+                <button class="drop-dialog__close" type="button" data-close aria-label="Fermer" data-i18n-aria="dialog.close">✕</button>
+              </header>
+
+              <div class="gallery" tabindex="0" role="region" aria-label="Galerie d'images" data-i18n-aria="dialog.gallery">
+                <figure class="gallery__item gallery__item--empty">
+                  <span data-i18n="dialog.noimg">Visuel à venir</span>
+                </figure>
+                <figure class="gallery__item gallery__item--empty">
+                  <span data-i18n="dialog.noimg">Visuel à venir</span>
+                </figure>
+              </div>
+
+              <div class="drop-dialog__body">
+                <div class="drop-dialog__text">
+                  <h4 data-i18n="dialog.pitch">Le pitch</h4>
+                  <p data-i18n="drops.web.long">
+                    Deux sites vitrines consacrés aux tournées de The Weeknd et de PLK :
+                    présentation de l'artiste, dates de concerts et univers visuel propre à chacun.
+                  </p>
+
+                  <h4 data-i18n="dialog.learned">Ce que j'ai appris</h4>
+                  <ul class="job__tasks">
+                    <li data-i18n="drops.web.r2">Développement assisté par IA (Claude Code, Copilot)</li>
+                    <li data-i18n="drops.web.l1">Adapter une identité visuelle à chaque artiste</li>
+                  </ul>
+                </div>
+
+                <aside class="drop-dialog__specs">
+                  <dl>
+                    <dt data-i18n="dialog.status">Statut</dt>
+                    <dd data-i18n="drops.web.status">Mise en ligne prochainement</dd>
+                    <dt data-i18n="dialog.year">Année</dt>
+                    <dd>2026</dd>
+                    <dt data-i18n="drops.tools">Outils</dt>
+                    <dd>
+                      <ul class="stickers drop__tools">
+                        <li class="sticker">HTML</li>
+                        <li class="sticker">CSS</li>
+                        <li class="sticker">JavaScript</li>
+                        <li class="sticker">Claude Code</li>
+                        <li class="sticker">GitHub Copilot</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <p class="sticker sticker--outline" data-i18n="dialog.nolink">Liens à venir</p>
+                </aside>
+              </div>
+            </div>
+          </dialog>
         </div>
       </section>
 

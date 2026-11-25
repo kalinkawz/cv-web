@@ -684,6 +684,282 @@ button.btn {
   font-size: 0.8rem;
 }
 
+/* Carte cliquable (classe posée par main.js seulement si l'encart peut s'ouvrir) */
+.drop--clickable {
+  cursor: pointer;
+}
+
+/* Carte en colonne : le bouton est poussé tout en bas, donc aligné d'une carte à l'autre
+   (la grille donne déjà la même hauteur à toutes les cartes d'une rangée) */
+.drop--clickable {
+  display: flex;
+  flex-direction: column;
+}
+
+.drop--clickable .drop__label {
+  align-self: flex-start; /* garde l'étiquette à sa largeur naturelle */
+}
+
+/* Bouton « bulle » Y2K : pilule bombée, contour cuivre chromé, reflet brillant */
+.drop__more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: flex-start;
+  margin-top: auto; /* prend tout l'espace libre au-dessus */
+  padding: 0.75rem 1.5rem 0.75rem 1.2rem;
+  overflow: hidden;
+  /* Deux fonds superposés : marine bombé dans la zone intérieure (padding-box)
+     et dégradé cuivre « chrome » sous la bordure transparente (border-box) */
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, #3b4a6f 0%, var(--ink) 55%, #141c30 100%) padding-box,
+    linear-gradient(135deg, #f6dcc0, var(--accent) 30%, #6e3f17 50%, var(--accent-pale) 70%, var(--accent)) border-box;
+  box-shadow:
+    0 0 0 2px var(--ink),           /* liseré marine autour du chrome */
+    5px 5px 0 2px var(--ink);       /* ombre pleine décalée (néo-brutalisme) */
+  color: #fff;
+  font: 700 0.9rem var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transform: rotate(-2deg); /* penché comme un sticker */
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+.drop__more[hidden] {
+  display: none;
+}
+
+/* Reflet brillant sur le haut de la bulle */
+.drop__more::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 12%;
+  right: 12%;
+  height: 45%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* Reflet holographique qui traverse le bouton au survol */
+.drop__more::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(234, 216, 198, 0.5) 45%, rgba(217, 162, 115, 0.45) 52%, transparent 62%) no-repeat;
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  pointer-events: none;
+  transition: background-position 0.7s ease;
+}
+
+/* Le texte passe au-dessus des reflets */
+.drop__more-star,
+.drop__more-text {
+  position: relative;
+  z-index: 1;
+}
+
+.drop__more-star {
+  color: var(--accent-light);
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+/* Survol de la carte (ou focus clavier) : le bouton se redresse et brille */
+.drop--clickable:hover .drop__more,
+.drop__more:focus-visible {
+  transform: rotate(0) scale(1.05);
+  box-shadow: 0 0 0 2px var(--ink), 7px 7px 0 2px var(--ink);
+}
+
+.drop--clickable:hover .drop__more::after,
+.drop__more:focus-visible::after {
+  background-position: -50% 0;
+}
+
+.drop--clickable:hover .drop__more-star,
+.drop__more:focus-visible .drop__more-star {
+  transform: rotate(180deg) scale(1.25);
+}
+
+/* Petit écart minimum entre la dernière liste et le bouton */
+.drop--clickable .job__tasks {
+  margin-bottom: 1.2rem;
+}
+
+/* ---------- 01 · Drops : encart de détail (<dialog>) ---------- */
+.drop-dialog {
+  width: min(100% - 2rem, 860px);
+  max-height: calc(100dvh - 2rem);
+  padding: 0; /* le fond cliquable = la boîte du dialog ; le contenu est dans __inner */
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+.drop-dialog::backdrop {
+  background: rgba(31, 42, 68, 0.75); /* marine translucide */
+}
+
+/* Empêche la page de défiler derrière l'encart ouvert */
+html:has(.drop-dialog[open]) {
+  overflow: hidden;
+}
+
+.drop-dialog__inner {
+  max-height: calc(100dvh - 2rem - 6px);
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.drop-dialog__head {
+  position: relative;
+  padding-right: 3rem; /* place pour le bouton fermer */
+  margin-bottom: 1.5rem;
+}
+
+.drop-dialog__title {
+  font-family: var(--font-tag);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.drop-dialog__tagline {
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.drop-dialog__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  background: var(--accent-pale);
+  color: var(--ink);
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--ink);
+  font: 700 1.2rem var(--font-body);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+}
+
+.drop-dialog__close:hover {
+  transform: rotate(90deg);
+}
+
+/* Galerie : bande horizontale, chaque image « s'aimante » au bord (scroll-snap) */
+.gallery {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery__item {
+  flex: 0 0 min(85%, 520px);
+  margin: 0;
+  scroll-snap-align: start;
+  border: var(--border);
+  background: var(--bg);
+}
+
+.gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.gallery__item figcaption {
+  padding: 0.4rem 0.8rem;
+  border-top: var(--border);
+  font-size: 0.9rem;
+}
+
+/* Emplacement vide en attendant les vraies images */
+.gallery__item--empty {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  border-style: dashed;
+  background: repeating-linear-gradient(-45deg, var(--bg), var(--bg) 12px, var(--bg-2) 12px, var(--bg-2) 24px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.drop-dialog__body {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.drop-dialog__text h4 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.drop-dialog__text h4:first-child {
+  margin-top: 0;
+}
+
+.drop-dialog__text p {
+  max-width: 60ch;
+}
+
+/* Fiche technique façon étiquette de composition */
+.drop-dialog__specs {
+  padding: 1.2rem;
+  background: var(--accent-pale);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  transform: rotate(1deg);
+}
+
+.drop-dialog__specs dl {
+  margin: 0 0 1rem;
+}
+
+.drop-dialog__specs dt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-dark);
+}
+
+.drop-dialog__specs dd {
+  margin: 0 0 0.8rem;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .drop-dialog__inner {
+    padding: 1.2rem;
+  }
+
+  .drop-dialog__body {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- 02 · Parcours : timeline qui se remplit ---------- */
 .timeline {
   position: relative;
@@ -1056,6 +1332,33 @@ button.btn {
   .drop::after {
     animation: sheen 7s ease-in-out infinite;
   }
+
+  /* Étoile du bouton « Voir le drop » qui scintille */
+  .js:not(.motion-paused) .drop__more-star {
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+
+  /* Encart : arrive comme un sticker qu'on plaque */
+  .js:not(.motion-paused) .drop-dialog[open] {
+    animation: dialog-in 0.45s var(--ease-spring);
+  }
+
+  .js:not(.motion-paused) .drop-dialog[open]::backdrop {
+    animation: fade-in 0.3s ease;
+  }
+}
+
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(30px) rotate(-2deg) scale(0.95); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }
 
 @keyframes failsafe {

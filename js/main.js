@@ -76,6 +76,39 @@ function initPrintButton() {
 initPrintButton();
 
 /* =========================================================
+   Encarts de détail des drops (<dialog>)
+   ========================================================= */
+
+/**
+ * Relie chaque carte de drop à son encart.
+ * <dialog> + showModal() fournit déjà : touche Échap, page derrière inactive,
+ * focus rendu à la carte à la fermeture. On ajoute le clic sur toute la carte
+ * et la fermeture par clic sur le fond assombri.
+ */
+function initDropDialogs() {
+  document.querySelectorAll("[data-dialog]").forEach((button) => {
+    const dialog = document.getElementById(button.dataset.dialog);
+    if (!dialog || typeof dialog.showModal !== "function") return; // navigateur trop ancien : on laisse caché
+
+    button.hidden = false;
+    const card = button.closest(".drop");
+    card.classList.add("drop--clickable");
+
+    // Clic n'importe où sur la carte (le bouton est dans la carte, donc couvert aussi)
+    card.addEventListener("click", () => dialog.showModal());
+  });
+
+  document.querySelectorAll(".drop-dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      // event.target === dialog : on a cliqué sur le fond, hors du contenu
+      if (event.target === dialog || event.target.closest("[data-close]")) dialog.close();
+    });
+  });
+}
+
+initDropDialogs();
+
+/* =========================================================
    Apparition au défilement
    ========================================================= */
 
@@ -94,7 +127,11 @@ function initReveal() {
     return;
   }
 
-  items.forEach((el) => el.style.setProperty("--delay", `${getStaggerDelay(el)}ms`));
+  items.forEach((el) => {
+    // Les stickers des encarts sont visibles d'office (sinon ils restent transparents)
+    if (el.closest("dialog")) el.classList.add("is-visible");
+    el.style.setProperty("--delay", `${getStaggerDelay(el)}ms`);
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {

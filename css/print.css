@@ -48,6 +48,8 @@ body {
 .drop::before,
 .drop::after,
 .drop__stamp,
+.drop__more,      /* bouton « Voir le drop » */
+.drop-dialog,     /* encarts de détail : réservés à l'écran */
 .form,
 .footer,
 .tape::before {

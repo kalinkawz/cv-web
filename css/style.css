@@ -333,30 +333,6 @@ button.btn {
   gap: 1rem;
 }
 
-/* Bouton FR/EN façon sticker rond */
-.btn-lang {
-  width: 3.4rem;
-  height: 3.4rem;
-  background: var(--ink-bg);
-  color: var(--on-ink);
-  border: var(--border);
-  border-radius: 50%;
-  box-shadow: 3px 3px 0 var(--accent);
-  font: 700 1rem var(--font-body);
-  cursor: pointer;
-  transform: translate(var(--mx, 0px), var(--my, 0px)) rotate(8deg);
-  transition: transform 0.4s var(--ease-spring);
-}
-
-.btn-lang:hover {
-  transform: translate(var(--mx, 0px), var(--my, 0px)) rotate(-8deg) scale(1.08);
-}
-
-/* Le CSS ci-dessus ne doit pas réafficher le bouton caché */
-.btn-lang[hidden] {
-  display: none;
-}
-
 .hero__name {
   margin-top: 1.5rem;
   padding-bottom: 0.45em; /* place pour les coulures */

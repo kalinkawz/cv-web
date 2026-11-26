@@ -82,17 +82,6 @@
       <div class="container hero__inner">
         <div class="hero__top">
           <p class="sticker sticker--drop">Drop 01 — 2026</p>
-          <!-- Caché sans JavaScript : i18n.js l'affiche -->
-          <button
-            class="btn-lang"
-            id="lang-toggle"
-            type="button"
-            lang="en"
-            aria-label="Switch to English"
-            hidden
-          >
-            EN
-          </button>
         </div>
 
         <!-- Les coulures sont dessinées en CSS sous la 2e ligne (.hero__line--drips) -->
@@ -209,6 +198,19 @@
             hidden
           >
             <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+        </li>
+        <!-- Bouton FR/EN, même style que Pause (caché sans JS : i18n.js l'affiche) -->
+        <li>
+          <button
+            class="motion-toggle"
+            id="lang-toggle"
+            type="button"
+            lang="en"
+            aria-label="Switch to English"
+            hidden
+          >
+            EN
           </button>
         </li>
       </ul>

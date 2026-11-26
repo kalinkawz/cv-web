@@ -269,6 +269,34 @@ function resetPointerEffects() {
 
 initMotionToggle();
 
+/**
+ * Bouton mode sombre : bascule l'attribut data-theme="dark" sur <html>
+ * (le CSS change alors ses variables de couleur) et mémorise le choix.
+ * aria-pressed="true" indique aux lecteurs d'écran que le mode sombre est actif.
+ */
+function initThemeToggle() {
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+  const root = document.documentElement;
+
+  button.hidden = false;
+  button.setAttribute("aria-pressed", root.dataset.theme === "dark");
+
+  button.addEventListener("click", () => {
+    const dark = root.dataset.theme !== "dark";
+    if (dark) root.dataset.theme = "dark";
+    else delete root.dataset.theme;
+    button.setAttribute("aria-pressed", dark);
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      /* stockage indisponible : le choix vaut pour cette visite */
+    }
+  });
+}
+
+initThemeToggle();
+
 /* =========================================================
    Intro de l'affiche : le nom apparaît lettre par lettre
    ========================================================= */

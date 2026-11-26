@@ -95,6 +95,7 @@ const TRANSLATIONS = {
 
     "band.skills": "RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★ RÉSEAUX ★ IOT ★ DATA ★ RGPD ★ CODE ★ ",
     "motion.label": "Mettre les animations en pause",
+    "theme.label": "Mode sombre",
     "drops.stamp": "Bientôt",
     "drops.more": "Voir le drop",
     "drops.game.long": "Undertaker est un jeu point & click narratif qui se déroule dans un lieu unique. Le joueur explore, interagit avec les objets et fait avancer l'histoire par ses choix.",
@@ -212,6 +213,7 @@ const TRANSLATIONS = {
 
     "band.skills": "NETWORKS ★ IOT ★ DATA ★ GDPR ★ CODE ★ NETWORKS ★ IOT ★ DATA ★ GDPR ★ CODE ★ ",
     "motion.label": "Pause animations",
+    "theme.label": "Dark mode",
     "drops.stamp": "Coming soon",
     "drops.more": "See the drop",
     "drops.game.long": "Undertaker is a narrative point & click game set in a single location. The player explores, interacts with objects and moves the story forward through their choices.",

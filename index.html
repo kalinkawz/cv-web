@@ -53,6 +53,10 @@
         if (localStorage.getItem("motion") === "paused") {
           document.documentElement.classList.add("motion-paused");
         }
+        // Mode sombre posé avant l'affichage : évite un « flash » blanc au chargement
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.dataset.theme = "dark";
+        }
       } catch (e) {}
     </script>
     <!-- defer : le script s'exécute une fois le HTML chargé -->
@@ -191,6 +195,20 @@
           >
             <span class="motion-toggle__icon" aria-hidden="true"></span>
             Pause
+          </button>
+        </li>
+        <!-- Bouton mode sombre (caché sans JS : main.js l'affiche) -->
+        <li>
+          <button
+            class="motion-toggle theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Mode sombre"
+            data-i18n-aria="theme.label"
+            hidden
+          >
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
           </button>
         </li>
       </ul>
